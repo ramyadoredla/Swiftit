@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Swiftit Solutions</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .yellow-line {
+            width: 50px;
+            height: 3px;
+            background: #f9ca24;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            background-color: #f9ca24;
+            border: none;
+            border-radius: 3px;
+            color: #1a1a72;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            user-select: none;
+            box-shadow: 0 0 0 2px #1a1a72 inset;
+            text-transform: uppercase;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            background-color: #e6b71f;
+            box-shadow: 0 0 20px 3px #e6b71f;
+            outline: none;
+        }
+
+        .btn-icon {
+            margin-left: 8px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 0;
+        }
+
+        /* Header Top Nav */
+        header {
+            background-color: #0e1667;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            background: white;
+            border-radius: 4px;
+            padding: 3px 8px;
+            color: #0e1667;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo img {
+            height: 30px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        nav {
+            flex-grow: 1;
+            margin-left: 40px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            justify-content: flex-start;
+        }
+
+        nav ul li a {
+            color: #cfd1dc;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 6px 0;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus {
+            color: #f9ca24;
+            outline: none;
+        }
+
+        .header-contact {
+            background-color: #2c30aa;
+            padding: 8px 16px;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 14px;
+            white-space: nowrap;
+            user-select: text;
+            cursor: default;
+            box-shadow: 0 0 8px 1px #3a44ea80;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0480bf78-e2a4-4902-97bf-b1cbdfca743a.png') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 150px 20px 80px;
+            user-select: none;
+            box-shadow: inset 0 0 60px #0e1667aa;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #dcdde1;
+            font-weight: 500;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #fff;
+            padding: 70px 20px 90px;
+        }
+
+        .services .section-header {
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        .services h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #222;
+        }
+
+        .services p.intro {
+            font-weight: 500;
+            font-size: 1rem;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .services-btn-container {
+            margin-top: 25px;
+            margin-bottom: 40px;
+        }
+
+        .btn-outline {
+            border: 2px solid #f9ca24;
+            background: transparent;
+            color: #1a1a72;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 10px 18px;
+            border-radius: 4px;
+            letter-spacing: 0.03em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover,
+        .btn-outline:focus {
+            background-color: #f9ca24;
+            color: #1a1a72;
+            box-shadow: 0 0 18px 3px #f9ca24;
+            outline: none;
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 35px 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            text-align: center;
+            font-size: 14px;
+            user-select: none;
+        }
+
+        .service-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 0 0.4px #555);
+        }
+
+        .service-icon svg {
+            fill: #1a1a72;
+            width: 40px;
+            height: 40px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .service-title {
+            font-weight: 700;
+            margin-bottom: 7px;
+            color: #111;
+        }
+
+        .service-desc {
+            font-weight: 500;
+            color: #555;
+            line-height: 1.3;
+            min-height: 56px;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-us {
+            background: url("https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/08dc0faf-5a17-4958-91c3-f7eb5cd93c1c.png") no-repeat center center/cover;
+            background-attachment: fixed;
+            color: white;
+            padding: 80px 20px 90px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            position: relative;
+        }
+
+        .why-left,
+        .why-right {
+            background-color: #0e1667dd;
+            border-radius: 8px;
+            padding: 40px 35px;
+            box-shadow: 0 0 15px #0009;
+            max-width: 500px;
+            flex: 1 1 420px;
+            color: white;
+        }
+
+        .why-left h3 {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .why-left .yellow-line {
+            background: #f9ca24;
+            margin-top: -10px;
+            margin-bottom: 25px;
+            margin-left: 0;
+            width: 45px;
+            height: 3px;
+            border-radius: 4px;
+        }
+
+        .why-left p.desc {
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            min-width: 36px;
+            min-height: 36px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: #121257;
+            color: #f9ca24;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+            box-shadow: 0 0 3px 0 #f9ca2470;
+            margin-top: 3px;
+            user-select: none;
+        }
+
+        .feature-text-container {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 3px;
+            color: white;
+        }
+
+        .feature-desc {
+            font-size: 13px;
+            line-height: 1.3;
+            color: #ddd;
+            font-weight: 500;
+        }
+
+        /* Why Right Panel Form */
+        .request-form {
+            background-color: white;
+            border-radius: 6px;
+            padding: 28px 25px 24px;
+            box-shadow: 0 0 12px rgb(0 0 0 / 0.28);
+            color: #222;
+            user-select: none;
+        }
+
+        .request-form h3 {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #0e1667;
+            margin-bottom: 22px;
+            user-select: text;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 14px;
+            font-family: inherit;
+            font-weight: 500;
+            border-radius: 4px;
+            border: 1.5px solid #ccc;
+            transition: border-color 0.3s ease;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0e1667;
+            box-shadow: 0 0 8px 1px #0e1667aa;
+            background-color: #f6f7ff;
+        }
+
+        .form-group textarea {
+            min-height: 95px;
+        }
+
+        .form-submit-btn {
+            margin-top: 8px;
+            background-color: #0e1667;
+            color: white;
+            border: none;
+            font-size: 15px;
+            padding: 12px 26px;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            user-select: none;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-submit-btn:hover,
+        .form-submit-btn:focus {
+            background-color: #151d94;
+            outline: none;
+        }
+
+        /* CTA Info Panel */
+        .cta-info {
+            background-color: #1a1f8a;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 45px 20px;
+            user-select: none;
+        }
+
+        .cta-col {
+            flex: 1 1 280px;
+            max-width: 380px;
+            padding: 10px 15px;
+            text-align: center;
+        }
+
+        .cta-icon-wrapper {
+            background-color: #f9ca24;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            color: #1a1a72;
+            box-shadow: 0 0 8px 3px #f9ca2470;
+            font-weight: 700;
+            font-size: 22px;
+            user-select: none;
+        }
+
+        .cta-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-desc {
+            font-size: 13px;
+            line-height: 1.3;
+            margin-bottom: 4px;
+            font-weight: 500;
+            color: #ddd;
+        }
+
+        .cta-link {
+            font-weight: 700;
+            font-size: 13px;
+            margin-top: 10px;
+            color: #f9ca24;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .cta-link svg {
+            height: 13px;
+            width: 13px;
+            fill: #f9ca24;
+            stroke-width: 0;
+        }
+
+        .cta-phone-number {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 6px 0 0;
+            color: #f9ca24;
+            user-select: text;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 70px 20px 90px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonials h2 {
+            font-weight: 700;
+            font-size: 1.9rem;
+            margin-bottom: 14px;
+            color: #222;
+            text-align: center;
+        }
+
+        .testimonials p.desc {
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 48px;
+            color: #666;
+            text-align: center;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        .testimonials-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: #f9fafc;
+            border-radius: 7px;
+            padding: 30px 25px 28px;
+            box-shadow: 0 2px 10px rgb(58 67 102 / 0.06);
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-text {
+            color: #555c72;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.39;
+            margin-bottom: 34px;
+            user-select: text;
+            white-space: pre-wrap;
+        }
+
+        .testimonial-author {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 120px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-weight: 700;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .author-position {
+            font-weight: 500;
+            font-size: 12px;
+            color: #a3a8bf;
+            margin-top: 4px;
+        }
+
+        .review-stars {
+            border-top: 3px solid #f9ca24;
+            padding-top: 14px;
+            margin-top: 18px;
+            display: flex;
+            gap: 12px;
+            color: #1a1a72;
+            font-weight: 700;
+            font-size: 14px;
+            user-select: none;
+            flex-wrap: wrap;
+        }
+
+        .review-stars span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .review-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: #f9ca24;
+            flex-shrink: 0;
+        }
+
+        .review-stars small {
+            font-weight: 500;
+            font-size: 11px;
+            color: #888;
+            user-select: text;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #1a237e;
+            color: #d9dcef;
+            font-size: 14px;
+            user-select: none;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto 20px;
+            padding: 0 20px;
+            justify-content: center;
+        }
+
+        .footer-column {
+            flex: 1 1 220px;
+            min-width: 220px;
+        }
+
+        .footer-logo {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            user-select: text;
+        }
+
+        .footer-logo img {
+            height: 36px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .footer-logo span {
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.04em;
+            color: white;
+            user-select: text;
+        }
+
+        .footer-col-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: #fff;
+            user-select: text;
+        }
+
+        .footer-text,
+        .footer-contact-info,
+        .footer-links {
+            font-weight: 500;
+            font-size: 13px;
+            color: #b7bbd9;
+            line-height: 1.4;
+            user-select: text;
+        }
+
+        .footer-contact-info p {
+            margin-bottom: 8px;
+            user-select: text;
+        }
+
+        .footer-contact-info strong {
+            color: #f9ca24;
+            font-weight: 600;
+            user-select: text;
+        }
+
+        .footer-links ul {
+            padding-left: 0;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 7px;
+        }
+
+        .footer-links ul li a {
+            color: #b7bbd9;
+            font-weight: 500;
+            font-size: 13px;
+            user-select: text;
+        }
+
+        .footer-links ul li a:hover,
+        .footer-links ul li a:focus {
+            color: #f9ca24;
+            outline: none;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .footer-socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background-color: #2830a5;
+            border-radius: 50%;
+            color: #b7bbd9;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+            user-select: none;
+        }
+
+        .footer-socials a:hover,
+        .footer-socials a:focus {
+            background-color: #f9ca24;
+            color: #1a1a72;
+            outline: none;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2830a5;
+            padding: 14px 20px;
+            font-weight: 500;
+            font-size: 13px;
+            color: #a0a3ba;
+            text-align: center;
+            user-select: none;
+        }
+
+        .footer-powered {
+            color: #f9ca24;
+            font-weight: 700;
+        }
+
+        /* Responsive Typography and Layout */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 130px 15px 60px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .why-choose-us {
+                flex-direction: column;
+                padding: 60px 15px 80px;
+            }
+
+            .why-left,
+            .why-right {
+                max-width: 100%;
+            }
+
+            .cta-info {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .cta-col {
+                max-width: 100%;
+            }
+
+            .testimonials-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        /* Icons: Using SVG inline for best control */
+
+        /* Network Icon */
+        .icon-network svg {
+            stroke: #1a1a72;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Hardware Icon */
+        .icon-hardware svg {
+            fill: #1a1a72;
+        }
+
+        /* Backup Icon */
+        .icon-backup svg {
+            stroke: #1a1a72;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Security Icon */
+        .icon-security svg {
+            stroke: #1a1a72;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Cloud Icon */
+        .icon-cloud svg {
+            stroke: #1a1a72;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Asset Icon */
+        .icon-asset svg {
+            stroke: #1a1a72;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Feature Icons in Why Choose Us - using white bg circle with colored symbol inside */
+        .feature-icon svg {
+            fill: #f9ca24;
+            stroke: none;
+        }
+
+        /* Stars for Testimonials */
+        .star-icon {
+            fill: #f9ca24;
+            stroke-width: 0;
+        }
+
+        /* Whatsapp icon bottom-right fixed */
+        .whatsapp-chat {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #25D366;
+            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 999;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .whatsapp-chat:hover,
+        .whatsapp-chat:focus {
+            box-shadow: 0 0 12px 4px #25D366cc;
+            outline: none;
+        }
+
+        .whatsapp-chat svg {
+            fill: white;
+            width: 28px;
+            height: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="#" class="logo" aria-label="Swiftit Solutions Logo">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/83bbbdec-6cb8-44cc-b672-bbc3aecf11a2.png"
+                alt="Swiftit Solutions company logo with blue S and text" />
+        </a>
+        <nav role="navigation" aria-label="Primary">
+            <ul>
+                <li><a href="#hero" tabindex="0">Home</a></li>
+                <li><a href="#services" tabindex="0">About</a></li>
+                <li><a href="#services" tabindex="0">Services</a></li>
+                <li><a href="#contact" tabindex="0">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-contact" aria-label="Contact phone number">
+            +91 9133121231
+        </div>
+    </header>
+
+    <section class="hero" id="hero" role="banner" aria-label="Hero Section showing company IT service message">
+        <h1>We Care About Your IT Needs</h1>
+        <p>At Swift IT Solutions, we prioritize your technology needs to drive your business success. Our expert team
+            delivers tailored
+            solutions that address your unique challenges, from network management and cybersecurity to cloud services.
+            Trust us to
+            enhance your IT infrastructure and optimize operations&mdash;because when it comes to technology, you
+            deserve the best.</p>
+    </section>
+
+    <section class="services section-padding" id="services" aria-labelledby="our-services-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="our-services-title">Our Services</h2>
+                <div class="yellow-line"></div>
+                <p class="intro">At Swift IT Solutions, we excel in providing comprehensive IT support and solutions
+                    tailored to meet the unique
+                    needs of our clients. Our team of skilled professionals is dedicated to delivering reliable network
+                    management,
+                    robust cybersecurity measures, efficient cloud services, and seamless data backup and recovery
+                    options.</p>
+                <div class="services-btn-container">
+                    <button class="btn-outline" aria-label="Navigate to Our Services">OUR SERVICES <span
+                            class="btn-icon">▶</span></button>
+                </div>
+            </div>
+
+            <div class="services-list" role="list">
+                <div class="service-item" role="listitem">
+                    <div class="service-icon icon-network" aria-hidden="true" title="Network Setup icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1a1a72"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="2" />
+                            <path d="M19.4 15a2 2 0 1 1-3.8-1" />
+                            <path d="M8.6 9a2 2 0 1 1-3.8 1" />
+                        </svg>
+                    </div>
+                    <div class="service-title">Network Setup</div>
+                    <div class="service-desc">We craft and sustain strong networks customized for SMEs.</div>
+                </div>
+
+                <div class="service-item" role="listitem">
+                    <div class="service-icon icon-hardware" aria-hidden="true" title="System Hardware icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#1a1a72">
+                            <path d="M7 14h10v2H7zM6 16h12v1H6zm8-6h-4v2h4z" />
+                        </svg>
+                    </div>
+                    <div class="service-title">System Hardware</div>
+                    <div class="service-desc">Sourcing and support for servers, PCs, and beyond.</div>
+                </div>
+
+                <div class="service-item" role="listitem">
+                    <div class="service-icon icon-backup" aria-hidden="true" title="Data Backups and Recovery icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1a1a72"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4v16h16" />
+                            <path d="M4 14h7a3 3 0 1 0 0-6H4v6z" />
+                        </svg>
+                    </div>
+                    <div class="service-title">Data Backups & Recovery</div>
+                    <div class="service-desc">Automatic backups with swift data recovery.</div>
+                </div>
+
+                <div class="service-item" role="listitem">
+                    <div class="service-icon icon-security" aria-hidden="true" title="Security icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1a1a72"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 1L3 5v6c0 5 3.5 9 9 9s9-4 9-9V5l-9-4z" />
+                            <path d="M9 10h6v4H9z" />
+                        </svg>
+                    </div>
+                    <div class="service-title">Security</div>
+                    <div class="service-desc">Full-spectrum defense against cyber threats.</div>
+                </div>
+
+                <div class="service-item" role="listitem">
+                    <div class="service-icon icon-cloud" aria-hidden="true" title="Cloud Services icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1a1a72"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 16a5 5 0 0 0-9.9-1H9a4 4 0 1 0 0 8h10a4 4 0 0 0 1-7.9z" />
+                        </svg>
+                    </div>
+                    <div class="service-title">Cloud Services</div>
+                    <div class="service-desc">Expert advice on subscriptions like AWS and Azure.</div>
+                </div>
+
+                <div class="service-item" role="listitem">
+                    <div class="service-icon icon-asset" aria-hidden="true" title="Asset Management icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1a1a72"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M8 12h8M12 8v8" />
+                        </svg>
+                    </div>
+                    <div class="service-title">Asset Management</div>
+                    <div class="service-desc">See how we help track and optimize your IT assets effectively.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-us" aria-labelledby="why-choose-us-title">
+        <div class="why-left" id="why-choose-us-content">
+            <h3 id="why-choose-us-title">Why Choose Us</h3>
+            <div class="yellow-line"></div>
+            <p class="desc">Our advanced security measures provide cutting-edge protection, safeguarding you from cyber
+                threats with
+                confidence. Above all, we offer a personalized approach, crafting customized strategies to drive your IT
+                success at
+                every step of the way.</p>
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-icon" aria-hidden="true" title="Expertise You Can Trust icon">
+                        <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                            focusable="false">
+                            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2" />
+                            <path d="M10 5a5 5 0 1 1 0 10v-10z" fill="currentColor" />
+                        </svg>
+                    </div>
+                    <div class="feature-text-container">
+                        <div class="feature-title">Expertise You Can Trust</div>
+                        <div class="feature-desc">Our skilled team offers proven IT solutions tailored to your needs.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon" aria-hidden="true" title="Fast & Reliable Support icon">
+                        <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                            focusable="false">
+                            <path d="M9 15l6-6M5 15l10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="feature-text-container">
+                        <div class="feature-title">Fast & Reliable Support</div>
+                        <div class="feature-desc">Quick response times and dependable service to keep you running
+                            smoothly.</div>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon" aria-hidden="true" title="Personalized Approach icon">
+                        <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                            focusable="false">
+                            <rect x="3" y="3" width="14" height="14" stroke="currentColor" stroke-width="2" rx="2" />
+                        </svg>
+                    </div>
+                    <div class="feature-text-container">
+                        <div class="feature-title">Personalized Approach</div>
+                        <div class="feature-desc">Customized strategies to ensure your IT success every step of the way.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon" aria-hidden="true" title="Advanced Security icon">
+                        <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                            focusable="false">
+                            <path d="M10 15v-4M12 7v1m-3 4h6" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="feature-text-container">
+                        <div class="feature-title">Advanced Security</div>
+                        <div class="feature-desc">This is a short description elaborating the service you have mentioned
+                            above.
+                            Cutting-edge protection to safeguard your business from threats.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <aside class="why-right" aria-label="Request Call Back form">
+            <form class="request-form" id="callback-form" onsubmit="return false;">
+                <h3>Request Call Back</h3>
+                <div class="form-group">
+                    <label for="req-name">Name *</label>
+                    <input type="text" id="req-name" name="name" required autocomplete="name"
+                        placeholder="Your full name" />
+                </div>
+                <div class="form-group">
+                    <label for="req-email">Email *</label>
+                    <input type="email" id="req-email" name="email" required autocomplete="email"
+                        placeholder="example@mail.com" />
+                </div>
+                <div class="form-group">
+                    <label for="req-contact">Contact Number *</label>
+                    <input type="tel" id="req-contact" name="contact" required autocomplete="tel"
+                        placeholder="+91 9876543210" />
+                </div>
+                <div class="form-group">
+                    <label for="req-message">Your Message</label>
+                    <textarea id="req-message" name="message"
+                        placeholder="Type your message here (optional)"></textarea>
+                </div>
+                <button type="submit" class="form-submit-btn" aria-label="Send Call Back Request">SEND REQUEST</button>
+            </form>
+        </aside>
+    </section>
+
+    <section class="cta-info" aria-label="Appointment, Working Hours and Emergency call information">
+        <div class="cta-col" role="article" aria-labelledby="make-appointment-title">
+            <div class="cta-icon-wrapper" aria-hidden="true" title="Make An Appointment icon">✉</div>
+            <h4 id="make-appointment-title" class="cta-title">Make An Appointment</h4>
+            <p class="cta-desc">This is a short description elaborating the service you have mentioned above.</p>
+            <a href="#request-form" class="cta-link" tabindex="0" aria-label="Book an appointment">
+                BOOK AN APPOINTMENT
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+                    <path fill="currentColor"
+                        d="M3.146 3.146l.708.708L2.207 5.5H11v1H2.207l1.647 1.646-.708.708L.793 6z" />
+                </svg>
+            </a>
+        </div>
+        <div class="cta-col" role="article" aria-labelledby="working-hours-title">
+            <div class="cta-icon-wrapper" aria-hidden="true" title="Working Hours icon"></div>
+            <h4 id="working-hours-title" class="cta-title">Working Hours</h4>
+            <p class="cta-desc">✔ Week Days: 09:00 – 19:00</p>
+            <p class="cta-desc">✔ Sunday: Remote Support</p>
+        </div>
+        <div class="cta-col" role="article" aria-labelledby="emergency-calls-title">
+            <div class="cta-icon-wrapper" aria-hidden="true" title="Emergency Calls icon"></div>
+            <h4 id="emergency-calls-title" class="cta-title">Emergency Calls 24/7</h4>
+            <p class="cta-phone-number" tabindex="0" aria-label="Emergency phone number">9133121231</p>
+            <a href="tel:+919133121231" class="cta-link" aria-label="Call Now phone number link" tabindex="0">
+                CALL NOW
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+                    <path fill="currentColor"
+                        d="M3.146 3.146l.708.708L2.207 5.5H11v1H2.207l1.647 1.646-.708.708L.793 6z" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <section class="testimonials section-padding" aria-label="Customer Testimonials">
+        <h2>Our Customer Say</h2>
+        <div class="yellow-line"></div>
+        <p class="desc">This is a short description elaborating on the reason that you have mentioned above. Tell them
+            why you are good!</p>
+
+        <div class="testimonials-list" role="list">
+            <div class="testimonial-card" role="listitem" tabindex="0"
+                aria-label="Testimonial from Howard Chavez, Entrepreneur">
+                <p class="testimonial-text">A positive testimonial that you think will tell people how good you are.
+                    Some positive words from an existing or a past client make a lot of difference and boost conversions
+                    on your website!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3dd44120-c25b-4ec8-90c6-3ab56c3d42f2.png"
+                            alt="Portrait of Howard Chavez, smiling entrepreneur man with suit" />
+                    </div>
+                    <div class="author-info">
+                        <div class="author-name">Howard Chavez</div>
+                        <div class="author-position">Entrepreneur</div>
+                    </div>
+                </div>
+                <div class="review-stars" aria-label="Rating and reviews">
+                    <span aria-hidden="true">
+                        <svg class="star-icon" viewBox="0 0 20 20">
+                            <polygon
+                                points="10 1.5 12.9 7.19 19.45 7.91 14.5 12.47 15.82 19.02 10 15.77 4.18 19.02 5.5 12.47 0.55 7.91 7.1 7.19" />
+                        </svg>
+                        <svg class="star-icon" viewBox="0 0 20 20">
+                            <polygon
+                                points="10 1.5 12.9 7.19 19.45 7.91 14.5 12.47 15.82 19.02 10 15.77 4.18 19.02 5.5 12.47 0.55 7.91 7.1 7.19" />
+                        </svg>
+                        <svg class="star-icon" viewBox="0 0 20 20">
+                            <polygon
+                                points="10 1.5 12.9 7.19 19.45 7.91 14.5 12.47 15.82 19.02 10 15.77 4.18 19.02 5.5 12.47 0.55 7.91 7.1 7.19" />
+                        </svg>
+                        <svg class="star-icon" viewBox="0 0 20 20">
+                            <polygon
+                                points="10 1.5 12.9 7.19 19.45 7.91 14.5 12.47 15.82 19.02 10 15.77 4.18 19.02 5.5 12.47 0.55 7.91 7.1 7.19" />
+                        </svg>
+                        <svg class="star-icon" viewBox="0 0 20 20">
+                            <polygon
+                                points="10 1.5 12.9 7.19 19.45 7.91 14.5 12.47 15.82 19.02 10 15.77 4.18 19.02 5.5 12.47 0.55 7.91 7.1 7.19" />
+                        </svg>
+                    </span>
+                    <small>Based on 642 Reviews</small>
+                </div>
+            </div>
+
+            <div class="testimonial-card" role="listitem" tabindex="0"
+                aria-label="Testimonial from Lucas Elliot, Designer">
+                <p class="testimonial-text">A positive testimonial that you think will tell people how good you are.
+                    Some positive words from an existing or a past client makes a lot of difference and boosts
+                    conversions on your website!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/42acb348-0032-41ac-a1db-50ad2cdda425.png"
+                            alt="Portrait of Lucas Elliot, professional smiling male designer headshot" />
+                    </div>
+                    <div class="author-info">
+                        <div class="author-name">Lucas Elliot</div>
+                        <div class="author-position">Designer</div>
+                    </div>
+                </div>
+                <div class="review-stars" aria-label="Rating and reviews">
+                    <span aria-hidden="true">
+                        <svg class="star-icon" viewBox="0 0 20 20">
+                            <polygon
+                                points="10 1.5 12.9 7.19 19.45 7.91 14.5 12.47 15.82 19.02 10 15.77 4.18 19.02 5.5 12.47 0.55 7.91 7.1 7.19" />
+                        </svg>
+                        <svg class="star-icon" viewBox="0 0 20 20">
+                            <polygon
+                                points="10 1.5 12.9 7.19 19.45 7.91 14.5 12.47 15.82 19.02 10 15.77 4.18 19.02 5.5 12.47 0.55 7.91 7.1 7.19" />
+                        </svg>
+                        <svg class="star-icon" viewBox="0 0 20 20">
+                            <polygon
+                                points="10 1.5 12.9 7.19 19.45 7.91 14.5 12.47 15.82 19.02 10 15.77 4.18 19.02 5.5 12.47 0.55 7.91 7.1 7.19" />
+                        </svg>
+                        <svg class="star-icon" viewBox="0 0 20 20">
+                            <polygon
+                                points="10 1.5 12.9 7.19 19.45 7.91 14.5 12.47 15.82 19.02 10 15.77 4.18 19.02 5.5 12.47 0.55 7.91 7.1 7.19" />
+                        </svg>
+                        <svg class="star-icon" viewBox="0 0 20 20">
+                            <polygon
+                                points="10 1.5 12.9 7.19 19.45 7.91 14.5 12.47 15.82 19.02 10 15.77 4.18 19.02 5.5 12.47 0.55 7.91 7.1 7.19" />
+                        </svg>
+                    </span>
+                    <small>Based on 642 Reviews</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer aria-label="Site footer">
+        <div class="footer-top container">
+            <div class="footer-column" aria-label="Company description and social media links">
+                <div class="footer-logo">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/09982b1a-68e2-4f40-91e8-6c5dc2a3011b.png"
+                        alt="Swiftit Solutions company logo footer version with blue and black text" />
+                    <span>Swiftit Solutions</span>
+                </div>
+                <p class="footer-text">We deliver tailored IT expertise with a focus on reliability, speed, and
+                    security. With personalized support,
+                    cutting-edge solutions, and a commitment to your success, we're your trusted partner for all things
+                    tech.</p>
+                <div class="footer-socials" aria-label="Social media links">
+                    <a href="#" aria-label="Facebook" tabindex="0" role="link" target="_blank" rel="noopener"><svg
+                            viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path
+                                d="M22.675 0h-21.35c-.733 0-1.325.59-1.325 1.323v21.353c0 .73.59 1.324 1.324 1.324h11.494v-9.294h-3.128v-3.622h3.128v-2.672c0-3.1 1.893-4.788 4.659-4.788 1.324 0 2.462.098 2.794.142v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.764v2.311h3.59l-.467 3.622h-3.123v9.294h6.116c.733 0 1.324-.594 1.324-1.324v-21.351c0-.733-.59-1.323-1.323-1.323z" />
+                        </svg></a>
+                    <a href="#" aria-label="Twitter" tabindex="0" role="link" target="_blank" rel="noopener"><svg
+                            viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path
+                                d="M24 4.557a9.819 9.819 0 0 1-2.828.775 4.938 4.938 0 0 0 2.165-2.723 9.864 9.864 0 0 1-3.127 1.195 4.92 4.92 0 0 0-8.38 4.482c-4.09-.2-7.719-2.163-10.148-5.144a4.822 4.822 0 0 0-.666 2.475 4.922 4.922 0 0 0 2.188 4.104 4.903 4.903 0 0 1-2.228-.616v.06a4.924 4.924 0 0 0 3.946 4.827 4.902 4.902 0 0 1-2.224.084 4.928 4.928 0 0 0 4.599 3.422 9.867 9.867 0 0 1-6.102 2.101c-.397 0-.79-.023-1.176-.07a13.936 13.936 0 0 0 7.547 2.212c9.055 0 14.002-7.503 14.002-14.001 0-.213-.005-.426-.014-.637a10.012 10.012 0 0 0 2.457-2.548l-.001-.001z" />
+                        </svg></a>
+                    <a href="#" aria-label="YouTube" tabindex="0" role="link" target="_blank" rel="noopener"><svg
+                            viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path
+                                d="M19.615 3.184c-.384-.356-1.05-.367-2.138-.39-1.315-.027-5.24-.027-6.547 0-1.086.023-1.755.034-2.138.39-.523.486-.758 1.48-.84 2.262a876.061 876.061 0 0 0-.098 4.067 876.1 876.1 0 0 0 .092 3.953c.075.79.32 1.783.832 2.265.38.357 1.049.37 2.116.388 1.328.025 5.324.025 6.644 0 1.068-.018 1.735-.031 2.1-.388.518-.484.755-1.486.828-2.278a878.89 878.89 0 0 0 .091-3.953 879.948 879.948 0 0 0-.096-4.067c-.086-.762-.315-1.743-.84-2.231Zm-7.25 6.966 4.988 2.874-4.988 2.864v-5.738Z" />
+                        </svg></a>
+                    <a href="#" aria-label="LinkedIn" tabindex="0" role="link" target="_blank" rel="noopener"><svg
+                            viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.026-3.037-1.849-3.037-1.853 0-2.135 1.444-2.135 2.937v5.669H9.356V9h3.414v1.561h.047c.476-.9 1.637-1.849 3.367-1.849 3.6 0 4.27 2.368 4.27 5.444v6.296ZM5.337 7.433a2.065 2.065 0 1 1 0-4.132 2.065 2.065 0 0 1 0 4.132ZM3.667 20.452h3.337V9H3.667v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.73v20.541C0 23.22.792 24 1.771 24h20.451c.982 0 1.778-.776 1.778-1.729V1.73C24 .774 23.207 0 22.225 0Z" />
+                        </svg></a>
+                </div>
+            </div>
+
+            <div class="footer-column" aria-label="Contact Information">
+                <h4 class="footer-col-title">Contact Info</h4>
+                <div class="footer-contact-info">
+                    <p>Address: KPHB, Hyderabad, TG.</p>
+                    <p>Call Us: <strong>91-9133121231</strong></p>
+                    <p>Email: <a href="mailto:support@swiftit.in" style="color:#f9ca24;">support@swiftit.in</a></p>
+                    <p>Mon – Sat: 9:00 AM – 7:00 PM</p>
+                </div>
+            </div>
+
+            <div class="footer-column" aria-label="Our Services">
+                <h4 class="footer-col-title">Our Services</h4>
+                <nav aria-label="Footer Our Services" class="footer-links">
+                    <ul>
+                        <li><a href="#services">Network Setup</a></li>
+                        <li><a href="#services">System Hardware</a></li>
+                        <li><a href="#services">Data Backups & Recovery</a></li>
+                        <li><a href="#services">Cloud Services</a></li>
+                        <li><a href="#services">Asset Management</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="footer-column" aria-label="About and Other Links">
+                <h4 class="footer-col-title">More</h4>
+                <nav aria-label="Footer More Links" class="footer-links">
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Need Door Step Service</a></li>
+                        <li><a href="#">Ask Quote</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="footer-bottom" role="contentinfo">
+            Copyright © 2025 swiftit.in | Powered by <span class="footer-powered">swiftit.in</span>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919133121231" class="whatsapp-chat" aria-label="Contact us on WhatsApp" target="_blank"
+        rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+                d="M20.52 3.48a11.427 11.427 0 0 0-16.17 16.18l-1.78 6.48 6.67-1.75a11.427 11.427 0 0 0 11.28-21.34zM12 20.4a8.36 8.36 0 0 1-4.3-1.2l-.3-.19-2.56.68.68-2.5-.2-.26a8.39 8.39 0 0 1 7.2-12.07 8.39 8.39 0 0 1 8.4 8.41 8.38 8.38 0 0 1-8.41 8.42zm4.55-5.37c-.27-.14-1.6-.79-1.84-.88-.24-.09-.42-.14-.6.14-.18.27-.7.88-.85 1.06-.16.18-.32.2-.6.07a7.3 7.3 0 0 1-2.13-1.3 8.05 8.05 0 0 1-1.5-1.86c-.15-.26-.02-.4.13-.54.14-.14.3-.32.46-.48.15-.16.2-.27.3-.45.1-.18.05-.34-.02-.48-.07-.14-.6-1.45-.82-2a1.8 1.8 0 0 0-.43-.49c-.14-.12-.3-.14-.44-.14s-.38 0-.58 0a1.09 1.09 0 0 0-.48.22 2 2 0 0 0-.6.58 2.56 2.56 0 0 0-.82 1.95c0 .41.22.8.62 1.15.4.35 1.02.95 2.2 1.53.3.13.53.21.71.33a3.46 3.46 0 0 1 1.6 1.97c.12.3.1.53.05.58s-.24.18-.56.3a3.06 3.06 0 0 1-1.18.3c-.35 0-.69-.05-.99-.14-.3-.09-.9-.37-1.37-.73a4.92 4.92 0 0 1-1.72-2.14 5.64 5.64 0 0 1-.41-1.76c0-.58.15-1.15.45-1.7a5.21 5.21 0 0 1 2.5-2.69 5.08 5.08 0 0 1 3.45-.35c.71.24 1.54 1.1 1.73 1.69a5.21 5.21 0 0 1 .08 3.3c-.04.14-.17.2-.44.12z" />
+        </svg>
+    </a>
+
+</body>
+
+</html>
